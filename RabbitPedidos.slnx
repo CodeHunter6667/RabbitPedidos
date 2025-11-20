@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="RabbitPedidos.Api/RabbitPedidos.Api.csproj" />
+  <Project Path="RabbitPedidos.Shared/RabbitPedidos.Shared.csproj" Id="f24ba600-4b43-479f-9269-c7d2ec7ca0c3" />
 </Solution>
