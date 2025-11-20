@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace RabbitPedidos.Api.Repository;
 
-public class BaseRepository<T>(PedidosDbContext context) : IBaseRepository<T> where T : class
+public abstract class BaseRepository<T>(PedidosDbContext context) : IBaseRepository<T> where T : class
 {
     public IEnumerable<T> GetAll()
         => context.Set<T>().AsEnumerable();

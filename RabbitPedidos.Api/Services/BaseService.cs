@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace RabbitPedidos.Api.Services;
 
-public class BaseService<T>(IBaseRepository<T> repository) : IBaseService<T> where T : class
+public abstract class BaseService<T>(IBaseRepository<T> repository) : IBaseService<T> where T : class
 {
     public void Insert(T entity)
         => repository.Insert(entity);
