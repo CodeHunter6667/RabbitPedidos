@@ -6,7 +6,7 @@ namespace RabbitPedidos.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class PedidoController(IPedidoService service) : ControllerBase
+public class PedidosController(IPedidoService service) : ControllerBase
 {
 
     [HttpPost]
