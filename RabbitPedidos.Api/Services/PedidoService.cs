@@ -14,4 +14,10 @@ public class PedidoService(IPedidoRepository repository) : BaseService<Pedido>(r
         await repository.Insert(pedido);
         return new PedidoDto(pedido);
     }
+
+    public async Task<IEnumerable<PedidoDto>> ObterPedidos()
+    {
+        var pedidos = await repository.GetAll();
+        return pedidos.Select(p => new PedidoDto(p));
+    }
 }
