@@ -6,18 +6,18 @@ namespace RabbitPedidos.Api.Services;
 
 public abstract class BaseService<T>(IBaseRepository<T> repository) : IBaseService<T> where T : class
 {
-    public void Insert(T entity)
-        => repository.Insert(entity);
+    public async Task Insert(T entity)
+        => await repository.Insert(entity);
 
-    public void Update(T entity)
-        => repository.Update(entity);
+    public async Task Update(T entity)
+        => await repository.Update(entity);
 
-    public void Delete(T entity)
-        => repository.Delete(entity);
+    public async Task Delete(T entity)
+        => await repository.Delete(entity);
 
-    public IEnumerable<T> GetAll()
-        => repository.GetAll();
+    public async Task<IEnumerable<T>> GetAll()
+        => await repository.GetAll();
 
-    public T? GetById(Expression<Func<T, bool>> predicate)
-        => repository.GetById(predicate);
+    public async Task<T?> Get(Expression<Func<T, bool>> predicate)
+        => await repository.Get(predicate);
 }

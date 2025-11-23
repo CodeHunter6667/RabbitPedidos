@@ -7,28 +7,28 @@ namespace RabbitPedidos.Api.Repository;
 
 public abstract class BaseRepository<T>(PedidosDbContext context) : IBaseRepository<T> where T : class
 {
-    public IEnumerable<T> GetAll()
-        => context.Set<T>().AsEnumerable();
+    public async Task<IEnumerable<T>> GetAll()
+        => await context.Set<T>().AsNoTracking().ToListAsync();
 
-    public T? GetById(Expression<Func<T, bool>> predicate)
-        => context.Set<T>().FirstOrDefault(predicate);
+    public async Task<T?> Get(Expression<Func<T, bool>> predicate)
+        => await context.Set<T>().FirstOrDefaultAsync(predicate);
 
-    public void Insert(T entity)
+    public async Task Insert(T entity)
     {
         context.Set<T>().Add(entity);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 
-    public void Update(T entity)
+    public async Task Update(T entity)
     {
         context.Set<T>().Entry(entity).State = EntityState.Modified;
         context.Set<T>().Update(entity);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 
-    public void Delete(T entity)
+    public async Task Delete(T entity)
     {
         context.Set<T>().Remove(entity);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 }
