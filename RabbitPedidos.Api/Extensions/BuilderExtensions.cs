@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RabbitPedidos.Api.Data;
+using RabbitPedidos.Api.Listeners;
 using RabbitPedidos.Api.Repository;
 using RabbitPedidos.Api.Repository.Interfaces;
 using RabbitPedidos.Api.Services;
@@ -25,11 +26,17 @@ public static class BuilderExtensions
 
     public static void AddRepositories(this WebApplicationBuilder builder1)
     {
-        builder1.Services.AddTransient<IPedidoRepository, PedidoRepository>();
+        builder1.Services.AddScoped<IPedidoRepository, PedidoRepository>();
     }
 
     public static void AddServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddTransient<IPedidoService, PedidoService>();
+        builder.Services.AddScoped<IPedidoService, PedidoService>();
+        builder.Services.AddSingleton<PedidoListener>();
+    }
+
+    public static void AddMessageBroker(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddSingleton<IMessageBroker, MessageBroker>();
     }
 }

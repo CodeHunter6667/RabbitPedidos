@@ -14,7 +14,7 @@ public static class PedidoExtension
             NomeCliente = dto.NomeCliente,
             Descricao = dto.Descricao,
             Valor = dto.Valor,
-            Status = EPedidoStatus.Processado
+            Status = EPedidoStatus.Pendente
         };
     }
 
@@ -27,6 +27,29 @@ public static class PedidoExtension
             Descricao = pedido.Descricao,
             Valor = pedido.Valor,
             Status = pedido.Status.ToString()
+        };
+    }
+
+    public static PedidoPendenteDto MapToPedidoPendenteDto(this Pedido pedido)
+    {
+        return new PedidoPendenteDto
+        {
+            Id = pedido.Id,
+            NomeCliente = pedido.NomeCliente,
+            Descricao = pedido.Descricao,
+            Valor = pedido.Valor
+        };
+    }
+
+    public static Pedido MapPendingToEntity(this PedidoPendenteDto dto)
+    {
+        return new Pedido
+        {
+            Id = dto.Id,
+            NomeCliente = dto.NomeCliente,
+            Descricao = dto.Descricao,
+            Valor = dto.Valor,
+            Status = EPedidoStatus.Processado
         };
     }
 }

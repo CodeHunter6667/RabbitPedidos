@@ -6,6 +6,7 @@ builder.AddConfigurations();
 builder.AddDbContext();
 builder.AddRepositories();
 builder.AddServices();
+builder.AddMessageBroker();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
@@ -21,5 +22,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.StartListener();
 
 app.Run();
