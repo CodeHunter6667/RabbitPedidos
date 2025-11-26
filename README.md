@@ -32,10 +32,6 @@ Uma API backend que faz o cadastro de pedidos e publica em uma fila do RabbitMQ,
   GET /api/v1/pedidos
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
 #### Cadastra um pedido
 
 ```http
@@ -46,7 +42,7 @@ Uma API backend que faz o cadastro de pedidos e publica em uma fila do RabbitMQ,
 | :---------- | :--------- | :------------------------------------------ |
 | `NomeCliente`      | `string` | Nome do cliente  |
 | `Descricao`      | `string` | Descrição do pedido  |
-| `Valor`      | `string` | Valor do pedido  |
+| `Valor`      | `decimal` | Valor do pedido  |
 
 
 ## Exemplo de JSON para cadastrar pedido
