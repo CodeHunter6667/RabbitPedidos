@@ -14,6 +14,11 @@ public static class BuilderExtensions
     public static void AddConfigurations(this WebApplicationBuilder builder)
     {
         Configurations.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
+        Configurations.RABBITMQ_HOSTNAME = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost";
+        Configurations.RABBITMQ_USERNAME = Environment.GetEnvironmentVariable("RABBITMQ_USER") ?? "guest";
+        Configurations.RABBITMQ_PASSWORD = Environment.GetEnvironmentVariable("RABBITMQ_PASS") ?? "guest";
+
+        Console.WriteLine($"Host do Rabbitmq: {Configurations.RABBITMQ_HOSTNAME}");
     }
 
     public static void AddDbContext(this WebApplicationBuilder builder)

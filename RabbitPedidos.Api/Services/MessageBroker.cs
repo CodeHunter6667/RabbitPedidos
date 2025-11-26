@@ -4,7 +4,6 @@ using RabbitPedidos.Api.Services.Interfaces;
 using RabbitPedidos.Shared.Commons;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Channels;
 
 namespace RabbitPedidos.Api.Services;
 
@@ -20,13 +19,14 @@ public class MessageBroker : IMessageBroker
             HostName = Configurations.RABBITMQ_HOSTNAME,
             UserName = Configurations.RABBITMQ_USERNAME,
             Password = Configurations.RABBITMQ_PASSWORD,
-            
+
         };
+
         _connection = factory.CreateConnectionAsync().GetAwaiter().GetResult();
         _channel = _connection.CreateChannelAsync().GetAwaiter().GetResult();
     }
 
-    private async Task  CreateQueue(string queueName)
+    private async Task CreateQueue(string queueName)
     {
         await _channel.QueueDeclareAsync(
             queue: queueName,
