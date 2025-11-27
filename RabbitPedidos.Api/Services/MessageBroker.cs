@@ -73,7 +73,6 @@ public class MessageBroker : IMessageBroker
 
                 if (message == null)
                 {
-                    // Discard malformed message
                     await _channel.BasicNackAsync(ea.DeliveryTag, multiple: false, requeue: false);
                     return;
                 }
