@@ -1,7 +1,8 @@
 {
 	"info": {
-		"_postman_id": "25c96b32-a07c-4040-8735-bc51ce53e407",
+		"_postman_id": "56ec901f-2039-4f05-8ed2-782bb4f921ef",
 		"name": "Pedidos Api",
+		"description": "Endpoint da api RabbitPedidos com as requisições necessárias para testar a aplicação",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28884519"
 	},
@@ -13,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"NomeCliente\": \"João Silva\",\r\n    \"Descricao\": \"Pedido de teste\",\r\n    \"Valor\": 150.00\r\n}",
+					"raw": "{\r\n    \"NomeCliente\": \"{{$randomFullName}}\",\r\n    \"Descricao\": \"{{$randomCatchPhraseDescriptor}}\",\r\n    \"Valor\": 900.00\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -54,11 +55,34 @@
 			"response": []
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "baseURL",
-			"value": "https://localhost:7077",
-			"type": "default"
+			"value": "http://localhost:8080"
 		}
 	]
 }
