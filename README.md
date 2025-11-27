@@ -86,7 +86,9 @@ Para parar a execução
 
 ## Realizando requisições pelo Postman
 
-Utilize a collection do Postman: https://.postman.co/workspace/My-Workspace~ca78e6bd-587f-43d6-861f-879d8836eaba/request/28884519-551f315d-faaa-4e16-a53d-a05579635076?action=share&creator=28884519&ctx=documentation
+Utilize a collection do Postman adicionada ao repositório: Pedidos Api.postman_collection.json
+
+Importe essa collection no seu Postman, que já inclui as requisições feitas para esse projeto;
 
 Nessa collection já se encontram uma requisição GET e uma requisição POST.
 
